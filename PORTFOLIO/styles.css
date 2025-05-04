@@ -11,6 +11,74 @@ body {
     #111;
 }
 
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+  padding: 20px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s, transform 0.3s;
+  backdrop-filter: blur(10px);
+  background: rgba(17, 17, 17, 0.7);
+  border-bottom-left-radius: 20px;
+  pointer-events: none;
+}
+
+.sticky-nav.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  color: #b0b3b8;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.2s;
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link:hover {
+  color: #00fff7;
+  transform: translateY(-2px);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00fff7 0%, #a259ff 100%);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #00fff7;
+  transform: translateY(-2px);
+}
+
+.nav-link.active::after {
+  width: 100%;
+  background: linear-gradient(90deg, #00fff7 0%, #a259ff 100%);
+}
+
 .main-center {
   display: flex;
   flex-direction: column;
@@ -126,10 +194,12 @@ body {
   display: flex;
   gap: 24px;
   margin-top: 0px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .explore-btn, .contact-btn, .projects-btn {
-  padding: 12px 32px;
+  padding: 12px 24px;
   font-size: 1rem;
   font-weight: 600;
   border: 2px solid #00fff7;
@@ -143,6 +213,9 @@ body {
     border-color 0.2s, 
     transform 0.2s,
     box-shadow 0.2s;
+  white-space: nowrap;
+  min-width: 120px;
+  text-align: center;
 }
 
 .contact-btn {
@@ -195,6 +268,26 @@ body {
   }
   .right-section {
     height: auto;
+  }
+  .button-group {
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .explore-btn, .contact-btn, .projects-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .explore-btn, .contact-btn, .projects-btn {
+    width: 100%;
+    padding: 12px;
   }
 }
 
