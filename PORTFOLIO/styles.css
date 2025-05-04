@@ -893,15 +893,3 @@ footer {
     transform: rotate(360deg);
   }
 }
-
-.connect-icon.codeforces img {
-  width: 48px;
-  height: 48px;
-  filter: brightness(0.8);
-  transition: filter 0.2s, transform 0.2s;
-}
-
-.connect-icon.codeforces:hover img {
-  filter: brightness(1);
-  transform: scale(1.1);
-}
