@@ -128,7 +128,7 @@ body {
   margin-top: 0px;
 }
 
-.explore-btn, .contact-btn {
+.explore-btn, .contact-btn, .projects-btn {
   padding: 12px 32px;
   font-size: 1rem;
   font-weight: 600;
@@ -150,7 +150,33 @@ body {
   color: #a259ff;
 }
 
-.explore-btn:hover, .contact-btn:hover {
+.projects-btn {
+  border: 2px solid transparent;
+  background: linear-gradient(90deg, #00fff7 0%, #a259ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  background: linear-gradient(90deg, #00fff7 0%, #a259ff 100%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  border-radius: 8px;
+}
+
+.explore-btn:hover, .contact-btn:hover, .projects-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 16px #00fff7, 0 0 32px #a259ff;
 }
@@ -525,6 +551,42 @@ body {
   margin: 0 0 0 0;
 }
 
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px 0;
+  flex-wrap: wrap;
+}
+
+.footer-nav-link {
+  color: #b0b3b8;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.2s, transform 0.2s;
+  position: relative;
+}
+
+.footer-nav-link:hover {
+  color: #00fff7;
+  transform: translateY(-2px);
+}
+
+.footer-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00fff7 0%, #a259ff 100%);
+  transition: width 0.3s;
+}
+
+.footer-nav-link:hover::after {
+  width: 100%;
+}
+
 .footer-socials {
   display: flex;
   justify-content: flex-end;
@@ -830,4 +892,16 @@ footer {
   to {
     transform: rotate(360deg);
   }
+}
+
+.connect-icon.codeforces img {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0.8);
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.connect-icon.codeforces:hover img {
+  filter: brightness(1);
+  transform: scale(1.1);
 }
