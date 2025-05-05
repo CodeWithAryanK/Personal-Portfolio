@@ -216,6 +216,7 @@ body {
   white-space: nowrap;
   min-width: 120px;
   text-align: center;
+  text-decoration: none;
 }
 
 .contact-btn {
